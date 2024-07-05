@@ -7,7 +7,7 @@ class Movement:
 
     def getIntendedPosition(self, camera_rot = 0, camera_x = 0, camera_z = 0, local_angle = 90, modifier = 1):
 
-        position = [camera_x, 0, camera_z];
+        position = [camera_x, 0, camera_z]
 
         x_offset = self.step_distance * math.cos(math.radians(camera_rot + local_angle))
         z_offset = self.step_distance * math.sin(math.radians(camera_rot + local_angle))
