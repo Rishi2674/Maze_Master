@@ -216,7 +216,7 @@ def main():
 
     glutDisplayFunc(drawScene)
     glutIdleFunc(drawScene)
-    initGL(640, 480)
+    initGL(1024, 768)
     glutMainLoop()
 
 if __name__ == "__main__":
