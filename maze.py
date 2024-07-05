@@ -173,7 +173,7 @@ def main():
 
     glutInit(sys.argv)
     glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE | GLUT_DEPTH)
-    glutInitWindowSize(640, 480)
+    glutInitWindowSize(1024, 768)
     glutInitWindowPosition(200, 200)
 
     window = glutCreateWindow('Experimental Maze')
