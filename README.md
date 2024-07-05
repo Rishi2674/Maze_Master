@@ -10,8 +10,9 @@ Simple 3D maze I built to learn OpenGL. Textures ripped from [Doom II](https://e
 
 * Python
 * [PyOpenGL](http://pyopengl.sourceforge.net/)
+* NumPy 1.26.4 `pip install numpy==1.26.4` (there are [issues with recent versions of NumPy](https://stackoverflow.com/questions/40845304/runtimewarning-numpy-dtype-size-changed-may-indicate-binary-incompatibility))
 
-Only tested with Python 3.7.2 on [Pop_OS 20.04](https://pop.system76.com/) (basically Ubuntu).
+Tested with Python 3.10.12 on [Ubuntu 22.04.4 LTS](https://ubuntu.com/).
 
 ## Running
 
