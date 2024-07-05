@@ -72,7 +72,7 @@ def drawScene():
     glPushMatrix()
     glTranslatef(0.0, -2.0, 0.0)
     glScalef(30.0, 1.0, 30.0)
-    plane.drawplane(floortexture, 40.0)
+    plane.drawplane(floortexture, 10.0)
     glPopMatrix()
 
     # Draw ceiling.
@@ -80,7 +80,7 @@ def drawScene():
     glTranslatef(0.0, 2.0, 0.0)
     glRotatef(180.0, 0.0, 0.0, 1.0)
     glScalef(30.0, 1.0, 30.0)
-    plane.drawplane(ceilingtexture, 50.0)
+    plane.drawplane(ceilingtexture, 10.0)
     glPopMatrix()
 
     # Draw test sprite.
@@ -205,10 +205,10 @@ def main():
     # Load texture.
     texture = Texture()
 
-    ceilingtexture = texture.loadImage('tex/ceiling.bmp')
-    floortexture = texture.loadImage('tex/floor.bmp')
-    orbtexture = texture.loadImage('tex/orb.bmp')
-    walltexture = texture.loadImage('tex/wall.bmp')
+    ceilingtexture = texture.loadImage('tex/ceiling.png')
+    floortexture = texture.loadImage('tex/floor.png')
+    orbtexture = texture.loadImage('tex/orb.png')
+    walltexture = texture.loadImage('tex/wall.png')
 
     glutIgnoreKeyRepeat(1)
     glutKeyboardFunc(input.registerKeyDown)
