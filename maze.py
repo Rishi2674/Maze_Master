@@ -160,10 +160,25 @@ def handleInput():
     intended_x = intended_pos[0]
     intended_z = intended_pos[2]
 
-    # Move camera if there are no walls in the way.
+    # Detect collision with walls.
     if (collision.testCollision(cubesize, map, intended_x, intended_z, collision_padding)):
         print('Collision at X:', intended_x, 'Z:', intended_z)
+
+        # If it's possible to keep the user moving by sliding along the wall, do so.
+        slide_time = False
+        if (collision.testCollision(cubesize, map, intended_x, camerapos[2], collision_padding) == False):
+            intended_z = camerapos[2]
+            slide_time = True
+        elif (collision.testCollision(cubesize, map, camerapos[0], intended_z, collision_padding) == False):
+            intended_x = camerapos[0]
+            slide_time = True
+
+        if (slide_time):
+            # Slide the camera along the wall.
+            camerapos[0] = intended_x
+            camerapos[2] = intended_z
     else:
+        # Move the camera to the user's intended position.
         camerapos[0] = intended_x
         camerapos[2] = intended_z
 

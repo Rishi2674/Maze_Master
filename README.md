@@ -40,5 +40,5 @@ In the root path, enter: `python3 maze.py`
 
 ## Things to fix
 
-* Collision detection makes walls sticky
+* ~~Collision detection makes walls sticky~~
 * ~~Cannot move and turn at the same time~~
