@@ -28,6 +28,10 @@ In the root path, enter: `python3 maze.py`
 
 `D` = Turn right
 
+`,` = Strafe left
+
+`.` = Strafe right
+
 ## Things to do
 
 * ~~Collision detection~~
