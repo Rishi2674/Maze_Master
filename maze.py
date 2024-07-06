@@ -83,15 +83,6 @@ def drawScene():
     plane.drawplane(ceiling_texture, 10.0)
     glPopMatrix()
 
-    # Draw test sprite.
-    glPushMatrix()
-    glTranslatef(0.0, 0.5, -6.0)
-    glRotatef(90.0, 1.0, 0.0, 0.0)
-    glRotatef(camera_rot, 0.0, 0.0, 1.0)
-    glScalef(1.0, 0.0, 1.0)
-    sprite.drawSprite(orb_texture)
-    glPopMatrix()
-
     # Build the maze like a printer; back to front, left to right.
     row_count = 0
     column_count = 0
@@ -126,6 +117,15 @@ def drawScene():
         row_count += 1
         # Reset the column count; this is a new row.
         column_count = 0
+
+    # Draw test sprite.
+    glPushMatrix()
+    glTranslatef(0.0, 0.0, -6.0)
+    glRotatef(90.0, 1.0, 0.0, 0.0)
+    glRotatef(camera_rot, 0.0, 0.0, 1.0)
+    glScalef(1.0, 0.0, 1.0)
+    sprite.drawSprite(orb_texture)
+    glPopMatrix()
 
     glutSwapBuffers()
 

@@ -11,12 +11,21 @@ class Sprite:
             glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL)
             glBindTexture(GL_TEXTURE_2D, texture_id)
 
-        glBegin(GL_QUADS)
+            # Enable alpha blending for transparency.
+            glEnable(GL_BLEND)
+            glDepthMask(GL_FALSE)
+            glBlendFunc(GL_SRC_ALPHA, GL_ONE)
 
-        # Textured plane.
-        glTexCoord2f(0.0, 0.0); glVertex3f(1.0, 1.0,-1.0)
-        glTexCoord2f(1.0, 0.0); glVertex3f(-1.0, 1.0,-1.0)
-        glTexCoord2f(1.0, 1.0); glVertex3f(-1.0, 1.0, 1.0)
-        glTexCoord2f(0.0, 1.0); glVertex3f(1.0, 1.0, 1.0)
+            glBegin(GL_QUADS)
 
-        glEnd()
+            # Textured plane.
+            glTexCoord2f(0.0, 0.0); glVertex3f(1.0, 1.0,-1.0)
+            glTexCoord2f(1.0, 0.0); glVertex3f(-1.0, 1.0,-1.0)
+            glTexCoord2f(1.0, 1.0); glVertex3f(-1.0, 1.0, 1.0)
+            glTexCoord2f(0.0, 1.0); glVertex3f(1.0, 1.0, 1.0)
+
+            glEnd()
+
+            glDisable(GL_TEXTURE_2D)
+            glDisable(GL_BLEND)
+            glDepthMask(GL_TRUE)
