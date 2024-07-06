@@ -16,20 +16,20 @@ class Plane:
 
             glBindTexture(GL_TEXTURE_2D, texture_id)
 
-        glBegin(GL_QUADS)
+            glBegin(GL_QUADS)
 
-        # Textured plane.
-        glTexCoord2f(0.0, 0.0); glVertex3f(1.0, 1.0,-1.0)
-        glTexCoord2f(texture_tile, 0.0); glVertex3f(-1.0, 1.0,-1.0)
-        glTexCoord2f(texture_tile, texture_tile); glVertex3f(-1.0, 1.0, 1.0)
-        glTexCoord2f(0.0, texture_tile); glVertex3f(1.0, 1.0, 1.0)
+            # Textured plane.
+            glTexCoord2f(0.0, 0.0); glVertex3f(1.0, 1.0,-1.0)
+            glTexCoord2f(texture_tile, 0.0); glVertex3f(-1.0, 1.0,-1.0)
+            glTexCoord2f(texture_tile, texture_tile); glVertex3f(-1.0, 1.0, 1.0)
+            glTexCoord2f(0.0, texture_tile); glVertex3f(1.0, 1.0, 1.0)
 
-        # Colored plane.
-        #
-        # glColor3f(1.0, 1.0, 1.0)
-        # glVertex3f(1.0, 1.0,-1.0)
-        # glVertex3f(-1.0, 1.0,-1.0)
-        # glVertex3f(-1.0, 1.0, 1.0)
-        # glVertex3f(1.0, 1.0, 1.0)
+            # Colored plane.
+            #
+            # glColor3f(1.0, 1.0, 1.0)
+            # glVertex3f(1.0, 1.0,-1.0)
+            # glVertex3f(-1.0, 1.0,-1.0)
+            # glVertex3f(-1.0, 1.0, 1.0)
+            # glVertex3f(1.0, 1.0, 1.0)
 
-        glEnd()
+            glEnd()
