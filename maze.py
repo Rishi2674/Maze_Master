@@ -207,7 +207,7 @@ def main():
 
     ceilingtexture = texture.loadImage('tex/ceiling.png')
     floortexture = texture.loadImage('tex/floor.png')
-    orbtexture = texture.loadImage('tex/orb.png', True)
+    orbtexture = texture.loadImage('tex/orb.png')
     walltexture = texture.loadImage('tex/wall.png')
 
     glutIgnoreKeyRepeat(1)

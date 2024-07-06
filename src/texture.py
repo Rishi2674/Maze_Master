@@ -2,11 +2,10 @@ from OpenGL.GL import *
 from OpenGL.GLUT import *
 from OpenGL.GLU import *
 from PIL.Image import open
-import numpy
 
 class Texture:
 
-    def loadImage(self, filename, alpha = False):
+    def loadImage(self, filename):
         try:
             image = open(filename)
         except IOError as ex:
@@ -15,8 +14,6 @@ class Texture:
             return -1
 
         print('Opened image file: size =', image.size, 'format =', image.format)
-        imageData = numpy.array(list(image.getdata()), numpy.uint8)
-        print(imageData)
 
         textureID = glGenTextures(1)
         glPixelStorei(GL_UNPACK_ALIGNMENT, 4)
@@ -24,10 +21,9 @@ class Texture:
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_BASE_LEVEL, 0)
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAX_LEVEL, 0)
 
-        if alpha:
-            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, image.size[0], image.size[1], 0, GL_RGBA, GL_UNSIGNED_BYTE, imageData)
-        else:
-            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, image.size[0], image.size[1], 0, GL_RGB, GL_UNSIGNED_BYTE, imageData)
+        imageData = image.convert('RGBA').tobytes()
+
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, image.size[0], image.size[1], 0, GL_RGBA, GL_UNSIGNED_BYTE, imageData)
 
         image.close()
 
