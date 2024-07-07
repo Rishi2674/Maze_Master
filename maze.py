@@ -5,10 +5,12 @@ from src.collision import Collision
 from src.cube import Cube
 from src.generator import Generator
 from src.input import Input
+from src.map import Map
 from src.movement import Movement
 from src.plane import Plane
 from src.sprite import Sprite
 from src.texture import Texture
+import argparse
 
 window = 0
 
@@ -193,29 +195,17 @@ def main():
 
     window = glutCreateWindow('Experimental Maze')
 
-    # Generate map.
-    generator = Generator()
-    map = generator.generateMap(16)
+    # Get map name from arguments.
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-m', '--map', help='The map to load.')
+    args = parser.parse_args()
 
-    # Represents a top-down view of the maze.
-    # map = [
-    #     [1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1],
-    #     [1, 1, 0, 0, 0, 1, 1, 0, 1, 0, 1],
-    #     [1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 1],
-    #     [1, 1, 1, 0, 0, 1, 1, 0, 0, 0, 1],
-    #     [1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1],
-    #     [1, 1, 0, 0, 0, 1, 1, 0, 0, 1, 1],
-    #     [1, 1, 0, 0, 0, 1, 1, 0, 0, 1, 1],
-    #     [1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 1],
-    #     [1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1],
-    #     [1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1],
-    #     [1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1],
-    #     [1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-    #     [1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-    #     [1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1],
-    #     [1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1],
-    #     [1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1]
-    # ]
+    if (args.map != None):
+        map = Map.loadMap(args.map)
+    else:
+        # Generate random map if no map is specified.
+        generator = Generator()
+        map = generator.generateMap(16)
 
     # Load texture.
     texture = Texture()

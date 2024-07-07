@@ -16,6 +16,14 @@ Tested with Python 3.10.12 on [Ubuntu 22.04.4 LTS](https://ubuntu.com/).
 
 In the root path, enter: `python3 maze.py`
 
+## Maps
+
+Maps can be found in the `/map` directory. To load a map, pass the map name as a parameter:
+
+`python3 maze.py --map 001`
+
+Leave out the map parameter to generate a random map.
+
 ## Controls
 
 `Esc` = Exit
@@ -40,7 +48,7 @@ In the root path, enter: `python3 maze.py`
 * Decals
 * Doors
 * Animated textures
-* Loadable maps
+* ~~Loadable maps~~
 
 ## Things to fix
 
