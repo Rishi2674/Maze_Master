@@ -38,7 +38,7 @@ map = []
 ceiling_texture = None
 floor_texture = None
 orb_texture = None
-wall_texture = None
+wall_textures = []
 
 def initGL(Width, Height):
 
@@ -98,9 +98,10 @@ def drawScene():
 
         for j in i:
 
-            # 1 = cube, 0 = empty space.
-            if (j == 1):
-                cube.drawcube(wall_texture, 1.0)
+            # 0 = empty space.
+            # 1 - 9 = wall.
+            if ((j > 0) and (j < 10)):
+                cube.drawcube(wall_textures[int(j) - 1], 1.0)
 
                 wall_x = (column_count * (cube_size * -1))
 
@@ -207,13 +208,15 @@ def main():
         generator = Generator()
         map = generator.generateMap(16)
 
-    # Load texture.
+    # Load textures.
     texture = Texture()
 
     ceiling_texture = texture.loadImage('tex/ceiling.png')
     floor_texture = texture.loadImage('tex/floor.png')
     orb_texture = texture.loadImage('tex/orb.png')
-    wall_texture = texture.loadImage('tex/wall.png')
+
+    wall_textures.append(texture.loadImage('tex/wall/01.png'))
+    wall_textures.append(texture.loadImage('tex/wall/02.png'))
 
     glutIgnoreKeyRepeat(1)
     glutKeyboardFunc(input.registerKeyDown)
