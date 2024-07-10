@@ -101,6 +101,7 @@ def drawScene():
             # 0 = empty space.
             # 1 - 9 = wall.
             if ((j > 0) and (j < 10)):
+                # Wall textures are zero-indexed, so subtract 1 from wall ID.
                 cube.drawcube(wall_textures[int(j) - 1], 1.0)
 
                 wall_x = (column_count * (cube_size * -1))
