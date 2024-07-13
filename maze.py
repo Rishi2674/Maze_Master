@@ -176,7 +176,7 @@ def handleInput():
 
     # Detect collision with walls.
     if (collision.testCollision(cube_size, map, intended_x, intended_z, collision_padding)):
-        print('Collision at X:', intended_x, 'Z:', intended_z)
+        # print('Collision at X:', intended_x, 'Z:', intended_z)
 
         # If it's possible to keep the user moving by sliding along the wall, do so.
         slide_time = False
