@@ -37,6 +37,7 @@ ceiling_texture = None
 floor_texture = None
 orb_texture = None
 wall_textures = []
+object_textures = []
 objects = []
 
 def initGL(Width, Height):
@@ -133,7 +134,8 @@ def drawScene():
         glRotatef(90.0, 1.0, 0.0, 0.0)
         glRotatef(camera_rot, 0.0, 0.0, 1.0)
         glScalef(1.0, 0.0, 1.0)
-        sprite.drawSprite(orb_texture)
+        # Object textures are zero-indexed, so subtract 10 from object ID.
+        sprite.drawSprite(object_textures[int(object[2]) - 10])
         glPopMatrix()
 
     glutSwapBuffers()
@@ -220,6 +222,8 @@ def main():
 
     wall_textures.append(texture.loadImage('tex/wall/01.png'))
     wall_textures.append(texture.loadImage('tex/wall/02.png'))
+
+    object_textures.append(texture.loadImage('tex/object/orb.png'))
 
     glutIgnoreKeyRepeat(1)
     glutKeyboardFunc(input.registerKeyDown)
