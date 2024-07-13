@@ -21,6 +21,10 @@ class Collision:
                     # Empty space; increment column count and skip over.
                     column_count += 1
                     continue
+                if (j > 9 and j < 20):
+                    # Object; increment column count and skip over.
+                    column_count += 1
+                    continue
 
                 wall_x = (column_count * (cube_size * -1))
 
