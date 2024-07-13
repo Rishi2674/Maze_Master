@@ -44,7 +44,7 @@ Leave out the map parameter to generate a random map.
 
 * ~~Collision detection~~
 * ~~Free movement~~
-* Sprites
+* ~~Sprites~~
 * Decals
 * Doors
 * Animated textures
