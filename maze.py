@@ -39,6 +39,7 @@ ceiling_texture = None
 floor_texture = None
 orb_texture = None
 wall_textures = []
+objects = []
 
 def initGL(Width, Height):
 
@@ -92,6 +93,8 @@ def drawScene():
     wall_x = 0.0
     wall_z = 0.0
 
+    objects = []
+
     for i in map:
 
         wall_z = (row_count * (cube_size * -1))
@@ -109,6 +112,9 @@ def drawScene():
                 if (first_run != True):
                     print('Drawing cube at X:', wall_x, 'Z:', wall_z)
 
+            if ((j > 9) and (j < 20)):
+                objects.append([column_count, row_count, j])
+
             # Move from left to right one cube size.
             glTranslatef(cube_size, 0.0, 0.0)
 
@@ -122,14 +128,18 @@ def drawScene():
         # Reset the column count; this is a new row.
         column_count = 0
 
-    # Draw test sprite.
-    glPushMatrix()
-    glTranslatef(0.0, 0.0, -6.0)
-    glRotatef(90.0, 1.0, 0.0, 0.0)
-    glRotatef(camera_rot, 0.0, 0.0, 1.0)
-    glScalef(1.0, 0.0, 1.0)
-    sprite.drawSprite(orb_texture)
-    glPopMatrix()
+    # Reset to start of map.
+    glTranslatef(0.0, 0.0, ((row_count * cube_size) * -1))
+
+    # Draw object sprites.
+    for object in objects:
+        glPushMatrix()
+        glTranslatef((object[0] * cube_size), 0.0, (object[1] * cube_size))
+        glRotatef(90.0, 1.0, 0.0, 0.0)
+        glRotatef(camera_rot, 0.0, 0.0, 1.0)
+        glScalef(1.0, 0.0, 1.0)
+        sprite.drawSprite(orb_texture)
+        glPopMatrix()
 
     glutSwapBuffers()
 
