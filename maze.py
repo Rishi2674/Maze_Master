@@ -35,7 +35,6 @@ map = []
 # Loaded textures.
 ceiling_texture = None
 floor_texture = None
-orb_texture = None
 wall_textures = []
 object_textures = []
 objects = []
@@ -89,14 +88,9 @@ def drawScene():
     row_count = 0
     column_count = 0
 
-    wall_x = 0.0
-    wall_z = 0.0
-
     objects = []
 
     for i in map:
-
-        wall_z = (row_count * (cube_size * -1))
 
         for j in i:
 
@@ -105,8 +99,6 @@ def drawScene():
             if ((j > 0) and (j < 10)):
                 # Wall textures are zero-indexed, so subtract 1 from wall ID.
                 cube.drawcube(wall_textures[int(j) - 1], 1.0)
-
-                wall_x = (column_count * (cube_size * -1))
 
             if ((j > 9) and (j < 20)):
                 objects.append([column_count, row_count, j])
@@ -192,7 +184,7 @@ def handleInput():
 
 def main():
 
-    global window, ceiling_texture, floor_texture, orb_texture, wall_texture, map
+    global window, ceiling_texture, floor_texture, object_textures, map
 
     glutInit(sys.argv)
     glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE | GLUT_DEPTH)
@@ -218,7 +210,6 @@ def main():
 
     ceiling_texture = texture.loadImage('tex/ceiling.png')
     floor_texture = texture.loadImage('tex/floor.png')
-    orb_texture = texture.loadImage('tex/orb.png')
 
     wall_textures.append(texture.loadImage('tex/wall/01.png'))
     wall_textures.append(texture.loadImage('tex/wall/02.png'))
