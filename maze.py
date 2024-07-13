@@ -26,8 +26,6 @@ camera_rot = 0.0
 # The angle in degrees the camera rotates each turn.
 rotate_angle = 1
 
-first_run = False
-
 collision = Collision()
 input = Input()
 movement = Movement()
@@ -55,7 +53,7 @@ def initGL(Width, Height):
 
 def drawScene():
 
-    global camera_pos, first_run
+    global camera_pos
 
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
 
@@ -109,9 +107,6 @@ def drawScene():
 
                 wall_x = (column_count * (cube_size * -1))
 
-                if (first_run != True):
-                    print('Drawing cube at X:', wall_x, 'Z:', wall_z)
-
             if ((j > 9) and (j < 20)):
                 objects.append([column_count, row_count, j])
 
@@ -144,9 +139,6 @@ def drawScene():
     glutSwapBuffers()
 
     handleInput()
-
-    if (first_run != True):
-        first_run = True
 
 def handleInput():
 
