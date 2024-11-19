@@ -1,28 +1,23 @@
+# src/texture.py
 from OpenGL.GL import *
-from PIL.Image import open
+from PIL import Image
 
 class Texture:
-
-    def loadImage(self, filename):
-        try:
-            image = open(filename)
-        except IOError as ex:
-            print('IOError: failed to open texture file')
-            print(ex)
-            return -1
-
-        print('Opened image file: size =', image.size, 'format =', image.format)
-
+    def loadImage(self, image_path):
+        # Generate a texture ID
         texture_id = glGenTextures(1)
-        glPixelStorei(GL_UNPACK_ALIGNMENT, 4)
         glBindTexture(GL_TEXTURE_2D, texture_id)
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_BASE_LEVEL, 0)
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAX_LEVEL, 0)
 
-        image_data = image.convert('RGBA').tobytes()
+        # Load the image using PIL
+        image = Image.open(image_path)
+        image = image.transpose(Image.FLIP_TOP_BOTTOM)
+        img_data = image.convert("RGBA").tobytes()
 
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, image.size[0], image.size[1], 0, GL_RGBA, GL_UNSIGNED_BYTE, image_data)
-
-        image.close()
+        # Set texture parameters
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, image.width, image.height, 0, GL_RGBA, GL_UNSIGNED_BYTE, img_data)
+        glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT)
+        glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT)
+        glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR)
+        glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR)
 
         return texture_id

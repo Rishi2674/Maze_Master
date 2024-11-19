@@ -3,7 +3,7 @@ import math
 class Movement:
 
     # Distance the camera moves during each step.
-    step_distance = 0.05
+    step_distance = 0.1
 
     def getIntendedPosition(self, camera_rot = 0, camera_x = 0, camera_z = 0, local_angle = 90, modifier = 1):
 
